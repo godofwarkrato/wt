@@ -1,0 +1,19 @@
+da 
+
+Transactions=[[‘eggs’,‘milk’,‘bread’],[‘eggs’,‘apple’],[‘milk’,‘bread’],[‘apple’,‘milk’],[‘milk’,
+‘apple’,‘bread’]]
+#Createadictionarytomapitemstouniquenumericvalues
+Item_to_num ={‘eggs’:1,‘milk’:2,‘bread’:3,‘apple’:4}
+#Convertthecategoricalvaluesinthedatasettonumericvalues
+Numeric_transactions=[]
+Fortransactionintransactions:
+Numeric_transaction=[item_to_num[item]foritem intransaction]
+Numeric_transactions.append(numeric_transaction)
+Print(numeric_transactions)
+From mlxtend.frequent_patternsimportapriori,association_rules
+#Generatefrequentitemsetswithaminimum supportof0.4
+Frequent_itemsets=apriori(numeric_transactions,min_support=0.4,use_colnames=True)
+#Generateassociationruleswithaminimum confidenceof0.7
+Rules=association_rules(frequent_itemsets,metric=”confidence”,min_threshold=0.7)
+Print(frequent_itemsets)
+Print(rules)

@@ -1,0 +1,45 @@
+php
+
+<?php
+$dom=new DomDocument();
+$dom->load("movie.xml");
+echo "<b>movies title</b><br>";
+$t=$dom->getElementsByTagName("title");
+foreach($t as $node)
+{
+	print $node->textContent;
+	echo "<br>";
+}
+echo "<b>actor name</b><br>";
+$t1=$dom->getElementsByTagName("actor");
+foreach($t1 as $node)
+{
+	print $node->textContent;
+	echo "<br>";
+}
+?>
+
+da
+
+Importpandasaspd
+From mlxtend.preprocessingimportTransactionEncoder
+From mlxtend.frequent_patternsimportapriori,association_rules
+#readthedataset
+Df=pd.read_csv(‘Market_Basket_Optimisation.csv’,header=None)
+#dropnullvalues
+Df.dropna(inplace=True)
+#convertcategoricalvaluestonumericusingone-hotencoding
+Te=TransactionEncoder()
+Te_ary=te.fit(df.values).transform(df.values)
+Df=pd.DataFrame(te_ary,columns=te.columns_)
+#generatefrequentitemsetsusingapriorialgorithm
+Frequent_itemsets=apriori(df,min_support=0.01,use_colnames=True)
+#generateassociationrulesfrom frequentitemsets
+Rules=association_rules(frequent_itemsets,metric=”lift”,min_threshold=1)
+#displayinformation
+Print(“OriginalDataset:\n”)
+Print(df.head())
+Print(“\nFrequentItemsets:\n”)
+Print(frequent_itemsets)
+Print(“\nAssociationRules:\n”)
+Print(rules)

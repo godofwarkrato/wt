@@ -1,0 +1,31 @@
+da
+
+Importpandasaspd
+From sklearn.datasetsimportload_iris
+From sklearn.linear_modelimportLogisticRegression
+From sklearn.model_selectionimporttrain_test_split
+From sklearn.metricsimportaccuracy_score
+#loadtheirisdataset
+Iris=load_iris()
+#createadataframefrom thedataset
+Df=pd.DataFrame(iris.data,columns=iris.feature_names)
+Df[‘target’]=iris.target
+#viewbasicstatisticaldetailsofthedifferentspecies
+Print(“StatisticaldetailsofIris-setosa:”)
+Print(df[df[‘target’]==0].describe())
+Print(“StatisticaldetailsofIris-versicolor:”)
+Print(df[df[‘target’]==1].describe())
+Print(“StatisticaldetailsofIris-virginica:”)
+Print(df[df[‘target’]==2].describe())
+#splitthedataintotrainingandtestingsets
+X=df.iloc[:,:-1]
+Y=df.iloc[:,-1]
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2,random_state=42)
+#fitalogisticregressionmodel
+Logreg=LogisticRegression()
+Logreg.fit(X_train,y_train)
+#makepredictionsonthetestset
+Y_pred=logreg.predict(X_test)
+#calculatetheaccuracyofthemodel
+Accuracy=accuracy_score(y_test,y_pred)
+Print(“Accuracyofthelogisticregressionmodel:”,accuracy
